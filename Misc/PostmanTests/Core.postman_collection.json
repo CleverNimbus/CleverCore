@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "ecdc1c7c-68e5-4eff-b06f-ce8f589cf9fc",
+		"name": "Core",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Example (Single EntryPoint)",
+			"item": [
+				{
+					"name": "Say Hello",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Parameters\": []\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5287/api/Clever.Example/Clever.Example.Domain.Contracts.IHelloDomain/SayHello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5287",
+							"path": [
+								"api",
+								"Clever.Example",
+								"Clever.Example.Domain.Contracts.IHelloDomain",
+								"SayHello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Say Hello WithParams",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Parameters\": [\"paramString\", \"2018-03-29T13:34:00.000\", \"0,00301\"]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5287/api/Clever.Example/Clever.Example.Domain.Contracts.IHelloDomain/SayHello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5287",
+							"path": [
+								"api",
+								"Clever.Example",
+								"Clever.Example.Domain.Contracts.IHelloDomain",
+								"SayHello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Say Hello With Object",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Parameters\": [\r\n        {\r\n            \"Id\": 332,\r\n            \"Name\": \"test book\",\r\n\t\t    \"Date\": \"2018-03-29T13:34:00.000\",\r\n\t\t    \"Age\": 1\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5287/api/Clever.Example/Clever.Example.Domain.Contracts.IHelloDomain/SayHello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5287",
+							"path": [
+								"api",
+								"Clever.Example",
+								"Clever.Example.Domain.Contracts.IHelloDomain",
+								"SayHello"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Say Hello With Wrong Type",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Parameters\": [\r\n        {\r\n\t\t    \"aaaaaaa\": 1\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5287/api/Clever.Example/Clever.Example.Domain.Contracts.IHelloDomain/SayHello",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5287",
+							"path": [
+								"api",
+								"Clever.Example",
+								"Clever.Example.Domain.Contracts.IHelloDomain",
+								"SayHello"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Example (With Controller)",
+			"item": [
+				{
+					"name": "Say Hello",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5287/api/HelloExample",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5287",
+							"path": [
+								"api",
+								"HelloExample"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {",
+							"  pm.expect(pm.response.code).to.eql(200);",
+							"});"
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Login Test",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"Username\": \"Sefe\", \"Password\": \"sefe\" }",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5287/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5287",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Entry Points",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5287/api/EndPoints",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5287",
+					"path": [
+						"api",
+						"EndPoints"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiU2VmZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNTk5MDY1ZWItZGFiNi00MDI5LThjOTQtYTA2YmJkYzQwZmFhIiwiZXhwIjoxNjQ3OTQ0NjI1LCJpc3MiOiJ3d3cuY2xldmVybmltYnVzLmVzIiwiYXVkIjoid3d3LmNsZXZlcm5pbWJ1cy5lcyJ9.ihZZQH1yE1WaS1m2aCoc2ld6rT2BPJnuIoDCejP8vWA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

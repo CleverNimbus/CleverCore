@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<Configurations>Debug;Release;Debug 1EntyPoint;Release 1EntryPoint</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug 1EntyPoint|AnyCPU'">
+    <DefineConstants>$(DefineConstants)TRACE;SINGLE_ENTRYPOINT</DefineConstants>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release 1EntryPoint|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;SINGLE_ENTRYPOINT</DefineConstants>
+	</PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Clever.Core\Clever.Core.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetDir)$(TargetName).dll&quot; &quot;$(SolutionDir)Core\Clever.API\bin\$(Configuration)\net6.0\Plugins\$(TargetName).dll&quot;" />
+  </Target>
+
+</Project>
